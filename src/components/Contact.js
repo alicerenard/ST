@@ -43,16 +43,16 @@ class Contact extends Component {
   onAvatarLoadingErrorHandler = (e) => {
     console.log('---', 'Using default avatar instead of not loaded')
     this.setState({
-      isOpen: this.state.isOpen,
       isAvatarOriginal: false
    })
   }
   
   handleClick = () => {
     console.log('---','clicked')
-    this.setState({
-      isOpen: !this.state.isOpen,
-      isAvatarOriginal: this.state.isAvatarOriginal
+    this.setState((state) => {
+      return {
+        isOpen: !state.isOpen
+      }
    })
   }
 }
