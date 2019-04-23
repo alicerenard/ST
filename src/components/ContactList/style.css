@@ -1,3 +1,22 @@
 .contact-list_li{
     list-style: none;
 }
+.brd {
+    border: 1px solid #f0efef; /* Параметры границы */
+
+    padding: 10px; /* Поля вокруг текста */
+    margin: 10px;
+}
+.btn-style{
+    border: 0;
+    width: 10px;
+
+    
+}
+.h1-name {
+    display:inline;
+}
+.my-header{
+    margin-top: 2.5rem !important;
+    margin-bottom:  2.5rem !important;
+}

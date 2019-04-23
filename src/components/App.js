@@ -64,7 +64,7 @@ class App extends Component
     }
 
     // save this.contactList to localStorage
-    saveContactListToStorage() {   
+    saveContactListToStorage = () => {   
         localStorage.setItem('ContactList', JSON.stringify(this.contactList))
     }
 
@@ -130,11 +130,13 @@ class App extends Component
         return (
             
             <div className="container">
-                <div className="jumbotrone"> 
-                     <h1 className="display-3" align="center" margine="2%">Contact List</h1>
+                <div >
+                   <p className="text-center"> 
+                     <h1 className="my-header">Contact List</h1>
+                     </p> 
                 </div>
                 <div id="ContactList">
-                     <ContactList contacts = {this.contactList}/>
+                     <ContactList contacts = {this.contactList} onContactsChanged={this.saveContactListToStorage}/>
                 </div>     
             </div>              
         )

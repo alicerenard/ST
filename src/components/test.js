@@ -16,8 +16,97 @@ const ButtonPage = () => {
   }
   
   export default ButtonPage;
-*/import React from "react";
+*/import React, {Component} from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+
+
+
+export default class EditingContact extends Component {
+
+  render() {
+    const {contact, onFinished} = this.props
+    
+    this.name = contact.name
+    this.email = contact.email
+    this.phone = contact.phone
+
+    return (
+    <MDBContainer>
+    <MDBRow>
+      <MDBCol className="w-responsive  mx-auto p-3 mt-2">
+        <form>
+          <p className="h5 text-center mb-4">Edit contact</p>
+          <div className="grey-text">
+            <MDBInput
+              label="Contact name"
+              icon="user-circle"
+              group
+              type="text"
+              validate
+              error="wrong"
+              success="right"
+              onChange = {(e) => {this.name = e.target.value}}
+            />
+
+            <MDBInput
+              label="Phone"
+              icon="mobile-alt"
+              group
+              type="text"
+              onChange = {(e) => {this.phone = e.target.value}}
+              validate
+            />
+            <MDBInput
+              label="Email"
+              icon="envelope"
+              group
+              type="email"
+              validate
+              error="wrong"
+              success="right"
+              onChange = {(e) => {this.email = e.target.value}}
+            />
+
+          </div>
+          <div className="text-center">
+            <MDBBtn color="blue-grey" onClick={this.onSaveClicked}>save
+            </MDBBtn>
+            <MDBBtn color="blue-grey" onClick={this.onCancelClicked}>cancel
+            </MDBBtn>
+          </div>
+        </form>
+      </MDBCol>
+    </MDBRow>
+  </MDBContainer>
+  )
+
+}
+
+onSaveClicked = () => 
+{
+  const {contact, onFinished} = this.props
+
+  console.log('---', this.name)
+  console.log('---', this.email)
+  console.log('---', this.phone)
+
+  contact.name = this.name
+  contact.email = this.email
+  contact.phone = this.phone
+
+  onFinished(true)
+}
+
+onCancelClicked = () => 
+{
+  const {onFinished} = this.props
+  onFinished(false)  
+}
+
+}
+
+
+/*
 
 const FormPage = () => {
   return (
@@ -67,4 +156,4 @@ const FormPage = () => {
   );
 };
 
-export default FormPage;
+export default FormPage;*/
