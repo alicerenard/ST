@@ -3,8 +3,6 @@ import {MDBIcon} from 'mdbreact';
 import Contact from '../Contact'
 import './style.css'
 
-
-
 class ContactList extends Component {
   constructor(props) {
     super(props)

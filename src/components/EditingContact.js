@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import {MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn} from 'mdbreact';
 
-
-
-export default class EditingContact extends Component {
+class EditingContact extends Component {
   constructor(props) {
     super(props)
 
@@ -105,3 +103,5 @@ export default class EditingContact extends Component {
     onFinished(false)  
   }
 }
+
+export default EditingContact

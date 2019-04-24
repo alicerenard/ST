@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
+import {MDBIcon} from "mdbreact";
 import noavatar from '../img/noavatar.png'
 import EditingContact from './EditingContact'
-import {  MDBRow,  MDBCol,  MDBContainer, MDBIcon, MDBBtn } from "mdbreact";
 
 class Contact extends Component {
   state = {
@@ -11,7 +11,7 @@ class Contact extends Component {
   }
   
   render() {
-    const {contact, onContactsChanged} = this.props
+    const {contact} = this.props
     
     const body = this.state.isOpen && 
       <div>
@@ -81,6 +81,5 @@ class Contact extends Component {
 
   }
 }
-
 
 export default Contact
