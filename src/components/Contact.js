@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import noavatar from '../img/noavatar.png'
-import EditingContact from './test'
+import EditingContact from './EditingContact'
 import {  MDBRow,  MDBCol,  MDBContainer, MDBIcon, MDBBtn } from "mdbreact";
 
 class Contact extends Component {
