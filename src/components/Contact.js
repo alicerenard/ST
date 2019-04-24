@@ -57,14 +57,12 @@ class Contact extends Component {
   }
   
   onAvatarLoadingErrorHandler = (e) => {
-    console.log('---', 'Using default avatar instead of not loaded')
     this.setState({
       isAvatarOriginal: false
    })
   }
   
   handleClick = () => {
-    console.log('---','clicked')
     this.setState((state) => {
       return {
         isEditing: !state.isEditing
@@ -74,7 +72,6 @@ class Contact extends Component {
 
   onEditingFinished = (isSaved) => {
     if (isSaved) {
-      console.log('---','yyyyyyyyyyyyyyyyyyyyyyyyyyyy', isSaved) 
       this.props.onContactsChanged()
     }
     
@@ -84,12 +81,6 @@ class Contact extends Component {
 
   }
 }
-
-
-
-        /*<button onClick={this.handleClick} className="btn btn-primary float-right  "> 
-                  {this.state.isOpen ?  'edit' : 'close'}
-                </button>*/
 
 
 export default Contact

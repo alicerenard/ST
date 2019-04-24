@@ -115,17 +115,6 @@ class App extends Component
             )
         }
         
-        /*
-        const errorBody = this.state.contactLoadingErrorMessage !== null && 
-            <div style={{color : 'red'}}>
-                <h2>
-                    Error occured during contact loading list: {this.state.contactLoadingErrorMessage} You start work with empty local contact list.
-                </h2>
-            </div>
-    
-        */
-
-        console.log('---', this.state)
 
         return (
             

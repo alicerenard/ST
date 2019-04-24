@@ -1,35 +1,32 @@
-/*import React, { Fragment } from "react"
-import { MDBBtn } from "mdbreact"
-
-const ButtonPage = () => {
-    return (
-      <Fragment>
-        <MDBBtn color="primary">Primary</MDBBtn>
-        <MDBBtn>Default</MDBBtn>
-        <MDBBtn color="secondary">Secondary</MDBBtn>
-        <MDBBtn color="success">Success</MDBBtn>
-        <MDBBtn color="info">Info</MDBBtn>
-        <MDBBtn color="warning">Warning</MDBBtn>
-        <MDBBtn color="danger">Danger</MDBBtn>
-      </Fragment>
-    );
-  }
-  
-  export default ButtonPage;
-*/import React, {Component} from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import React, {Component} from "react";
+import {MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn} from 'mdbreact';
 
 
 
 export default class EditingContact extends Component {
+  constructor(props) {
+    super(props)
+
+    const {contact} = this.props
+
+    this.state = {
+      name: contact.name,
+      phone: contact.phone,
+      email: contact.email
+    }
+  }
+
+  handleEditing = inputName => {
+    return value => {
+      const nextValue = value
+
+      this.setState({
+        [inputName]: nextValue
+      })
+    }
+  }
 
   render() {
-    const {contact, onFinished} = this.props
-    
-    this.name = contact.name
-    this.email = contact.email
-    this.phone = contact.phone
-
     return (
     <MDBContainer>
     <MDBRow>
@@ -45,7 +42,8 @@ export default class EditingContact extends Component {
               validate
               error="wrong"
               success="right"
-              onChange = {(e) => {this.name = e.target.value}}
+              hint={this.state.name}
+              getValue = {this.handleEditing("name")}
             />
 
             <MDBInput
@@ -53,7 +51,8 @@ export default class EditingContact extends Component {
               icon="mobile-alt"
               group
               type="text"
-              onChange = {(e) => {this.phone = e.target.value}}
+              hint={this.state.phone}
+              getValue = {this.handleEditing("phone")}
               validate
             />
             <MDBInput
@@ -64,7 +63,8 @@ export default class EditingContact extends Component {
               validate
               error="wrong"
               success="right"
-              onChange = {(e) => {this.email = e.target.value}}
+              hint={this.state.email}
+              getValue = {this.handleEditing("email")}
             />
 
           </div>
@@ -77,83 +77,31 @@ export default class EditingContact extends Component {
         </form>
       </MDBCol>
     </MDBRow>
-  </MDBContainer>
-  )
-
-}
-
-onSaveClicked = () => 
-{
-  const {contact, onFinished} = this.props
-
-  console.log('---', this.name)
-  console.log('---', this.email)
-  console.log('---', this.phone)
-
-  contact.name = this.name
-  contact.email = this.email
-  contact.phone = this.phone
-
-  onFinished(true)
-}
-
-onCancelClicked = () => 
-{
-  const {onFinished} = this.props
-  onFinished(false)  
-}
-
-}
-
-
-/*
-
-const FormPage = () => {
-  return (
-    <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
-          <form>
-            <p className="h5 text-center mb-4">Edit contact</p>
-            <div className="grey-text">
-              <MDBInput
-                label="New Name"
-                icon="user-circle"
-                group
-                type="text"
-                validate
-                error="wrong"
-                success="right"
-              />
-
-              <MDBInput
-                label="New email"
-                icon="envelope"
-                group
-                type="email"
-                validate
-                error="wrong"
-                success="right"
-              />
-              <MDBInput
-                label="New mobile number"
-                icon="mobile-alt"
-                group
-                type="text"
-                validate
-              />
-            </div>
-            <div className="text-center">
-              <MDBBtn>save
-              </MDBBtn>
-              <MDBBtn>cancel
-              </MDBBtn>
-            </div>
-          </form>
-        </MDBCol>
-      </MDBRow>
     </MDBContainer>
-  );
-};
+    )
+  }
 
-export default FormPage;*/
+  onSaveClicked = () => 
+  {
+    const {contact, onFinished} = this.props
+
+    contact.name = this.state.name.trim()
+    contact.email = this.state.email.trim()
+    contact.phone = this.state.phone.trim()
+
+    onFinished(true)
+   } 
+
+  onCancelClicked = () => 
+  {
+    const {contact, onFinished} = this.props
+
+    this.setState({
+      name: contact.name,
+      phone: contact.phone,
+      email: contact.email
+   })
+
+    onFinished(false)  
+  }
+}
